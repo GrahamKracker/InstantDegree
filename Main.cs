@@ -15,7 +15,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-[assembly: MelonInfo(typeof(InstantDegree.Main), "InstantDegree", "2.3", "DepletedNova")]
+[assembly: MelonInfo(typeof(InstantDegree.Main), "InstantDegree", "2.4.0", "DepletedNova and GrahamKraker")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
 namespace InstantDegree
