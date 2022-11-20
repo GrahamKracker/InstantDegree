@@ -8,7 +8,7 @@ on:
       - '*'
 
 env:
-  PROJECT_NAME: MoreDegrees
+  PROJECT_NAME: InstantDegree
   MOD_HELPER_BRANCH: master
   
   MOD_HELPER_NAME: Btd6ModHelper
