@@ -1,9 +1,3 @@
-using Assets.Scripts.Simulation.Towers.Behaviors;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.Bridge;
-using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes;
-using Assets.Scripts.Unity.UI_New.Popups;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
@@ -11,16 +5,23 @@ using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
 using MelonLoader;
 using System;
+using Il2CppAssets.Scripts.Simulation.Towers.Behaviors;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Bridge;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppTMPro;
+using MoreDegrees;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-[assembly: MelonInfo(typeof(InstantDegree.Main), "InstantDegree", "2.4.0", "DepletedNova and GrahamKraker")]
+[assembly: MelonInfo(typeof(InstantDegree.Main), ModHelperData.Name, ModHelperData.Version, "DepletedNova & GrahamKraker")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
 namespace InstantDegree
 {
-    using TMPro;
     using static Int32;
 
     public class Main : BloonsTD6Mod
