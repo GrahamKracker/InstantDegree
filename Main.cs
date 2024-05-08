@@ -1,9 +1,10 @@
+using MelonLoader;
 using BTD_Mod_Helper;
+using InstantDegree2;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
 using HarmonyLib;
-using MelonLoader;
 using System;
 using Il2CppAssets.Scripts.Simulation.Towers.Behaviors;
 using Il2CppAssets.Scripts.Unity;
@@ -11,22 +12,23 @@ using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppTMPro;
-using MoreDegrees;
+//using MoreDegrees;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-[assembly: MelonInfo(typeof(InstantDegree.Main), ModHelperData.Name, ModHelperData.Version, "DepletedNova & GrahamKracker")]
+[assembly: MelonInfo(typeof(InstantDegree2.Main), ModHelperData.Name, ModHelperData.Version, "DepletedNova & GrahamKracker & Tanner")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
-namespace InstantDegree
+namespace InstantDegree2
 {
     using static Int32;
 
     public class Main : BloonsTD6Mod
     {
-        private static readonly ModSettingBool Enabled = new(true) {displayName = "Enabled"};
+        private static readonly ModSettingBool Enabled = new(true) { displayName = "Enabled" };
         // UI
         private static GameObject? _paragonButton;
 
@@ -52,6 +54,7 @@ namespace InstantDegree
                     var rect = _paragonButton.GetComponent<RectTransform>();
                     rect.localPosition = new Vector3(-140, 10);
                     rect.sizeDelta = new Vector2(643, 235);
+                    //Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference(ModContent.GetTextureGUID<Main>("DegreeButton"));
                     _paragonButton.GetComponent<Image>().SetSprite(ModContent.CreateSpriteReference(ModContent.GetTextureGUID<Main>("DegreeButton")));
                     _paragonButton.gameObject.GetComponent<Button>().SetOnClick(() =>
                     {
@@ -61,7 +64,7 @@ namespace InstantDegree
                             int x;
                             try
                             {
-                                x=Parse(y);
+                                x = Parse(y);
                             }
                             catch (OverflowException)
                             {
@@ -70,8 +73,8 @@ namespace InstantDegree
                             SetDegree(x, ref paragonTower);
                             paragonTower.CreateDegreeText();
                         }), "100");
-                        PopupScreen.instance.ModifyField(tmp => {tmp.characterLimit = MaxValue; });
-                        PopupScreen.instance.ModifyField(tmp => {tmp.characterValidation = TMP_InputField.CharacterValidation.Integer; });
+                        PopupScreen.instance.ModifyField(tmp => { tmp.characterLimit = MaxValue; });
+                        PopupScreen.instance.ModifyField(tmp => { tmp.characterValidation = TMP_InputField.CharacterValidation.Integer; });
                     });
                 }
                 else if (_paragonButton != null && !Enabled)
@@ -83,11 +86,11 @@ namespace InstantDegree
         }
 
         private static void SetDegree(int x, ref ParagonTower paragonTower)
-        {      
+        {
             var info = paragonTower.investmentInfo;
             var y = Math.Min(InGame.instance.GetGameModel().paragonDegreeDataModel.degreeCount, x);
             var z = Math.Max(1, y);
-            
+
             if (z <= Game.instance.model.paragonDegreeDataModel.powerDegreeRequirements.Length)
             {
                 info.totalInvestment = Game.instance.model.paragonDegreeDataModel.powerDegreeRequirements[z - 1];
@@ -95,15 +98,15 @@ namespace InstantDegree
                 paragonTower.UpdateDegree();
                 return;
             }
-            info.totalInvestment = CalculateInvestment(z);         
+            info.totalInvestment = CalculateInvestment(z);
             paragonTower.investmentInfo = info;
             paragonTower.UpdateDegree();
         }
 
         private static float CalculateInvestment(float degree)
         {
-            var investment = 50f * (float) Math.Pow(degree, 3);
-            investment += 5025f * (float) Math.Pow(degree, 2);
+            var investment = 50f * (float)Math.Pow(degree, 3);
+            investment += 5025f * (float)Math.Pow(degree, 2);
             investment += 168324f * degree;
             investment += 843000f;
             investment /= 590f;
