@@ -1,6 +1,6 @@
 using MelonLoader;
 using BTD_Mod_Helper;
-using InstantDegree2;
+using InstantDegree;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
@@ -14,15 +14,15 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelection
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppTMPro;
-//using MoreDegrees;
+using MoreDegrees;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-[assembly: MelonInfo(typeof(InstantDegree2.Main), ModHelperData.Name, ModHelperData.Version, "DepletedNova & GrahamKracker & Tanner")]
+[assembly: MelonInfo(typeof(InstantDegree.Main), ModHelperData.Name, ModHelperData.Version, "DepletedNova & GrahamKracker & Tanner")]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
-namespace InstantDegree2
+namespace InstantDegree
 {
     using static Int32;
 
